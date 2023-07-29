@@ -4,9 +4,9 @@ from pages.cdek_page import CdekPage
 import allure
 import pytest
 
-@allure.title("")
+@allure.title("Проверка на разрешении 1024х1366")
 def test_cdek_1024_1366(browser):
-    cdek = CdekPage(browser)
+    cdek = CdekPage(browser, width=1024, height=1366)
     with allure.step("Проверка открытия карточки"):
         cdek.go_to_site('https://cdek.shopping/p/54588/krossovki-nike-sportswear-wmns-air-force-1-07-white')
     with allure.step("Проверка кнопки выбора размеров"):
@@ -22,22 +22,22 @@ def test_cdek_1024_1366(browser):
         cdek.backet_checkout()
 
 
-# @allure.title("")
-# def test_cdek_360_1366(browser):
-#     cdek = CdekPage(browser, width=360, height=640)
-#     with allure.step("Проверка открытия карточки"):
-#         cdek.go_to_site('https://cdek.shopping/p/54588/krossovki-nike-sportswear-wmns-air-force-1-07-white')
-#     with allure.step("Проверка кнопки выбора размеров"):
-#         cdek.checking_product()
-#
-#     with allure.step('Проверка появившихся размеров'):
-#         cdek.get_size()
-#     with allure.step('Проверка добавления в карзину'):
-#         cdek.check_add_cart()
-#     with allure.step('Проверка кнопки перехода в карзину'):
-#         cdek.go_backet()
-#     with allure.step('Проверка кнопки купить'):
-#         cdek.backet_checkout()
+@allure.title("Проверка на разрешении 360х640")
+def test_cdek_360_1366(browser):
+    cdek = CdekPage(browser, width=360, height=640)
+    with allure.step("Проверка открытия карточки"):
+        cdek.go_to_site('https://cdek.shopping/p/54588/krossovki-nike-sportswear-wmns-air-force-1-07-white')
+    with allure.step("Проверка кнопки выбора размеров"):
+        cdek.checking_product()
+
+    with allure.step('Проверка появившихся размеров'):
+        cdek.get_size()
+    with allure.step('Проверка добавления в карзину'):
+        cdek.check_add_cart()
+    with allure.step('Проверка кнопки перехода в карзину'):
+        cdek.go_backet()
+    with allure.step('Проверка кнопки купить'):
+        cdek.backet_checkout()
 
 
 # @allure.title("")

@@ -16,13 +16,11 @@ def browser():
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
                      help="Choose browser: chrome or firefox")
-    parser.addoption('--window-size=2560,1440', action='store', default="1980, 1920",
-                     help="Choose size: width height")
+
 
 @pytest.fixture(scope="function")
 def browser(request):
     browser_name = request.config.getoption("browser_name")
-    windows_size = request.config.getoption('windows_size')
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
