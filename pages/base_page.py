@@ -15,9 +15,9 @@ class BasePage:
     def go_to_site(self, url):
         return self.browser.get(url)
 
-    def is_element_present(self, how, what):
+    def is_element_present(self, how, what, timeout=4):
         try:
-            self.browser.find_element(how, what)
+            WebDriverWait(self.browser.find_element(how, what), timeout)
         except NoSuchElementException:
             return False
         return True
