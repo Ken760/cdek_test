@@ -11,10 +11,15 @@ class CdekPage(BasePage):
 
     def checking_product(self):
         assert self.is_element_present(*CdekLocators.PRODUCT_PAGE_SELECTOR), "Кнопка выбора размеров отсутствует"
-        product_select = self.browser.find_element(*CdekLocators.PRODUCT_PAGE_SELECTOR)
-        self.browser.execute_script("arguments[0].scrollIntoView(true);", product_select)
-        sleep(1)
-        product_select.click()
+        try:
+            product_select = self.browser.find_element(*CdekLocators.PRODUCT_PAGE_SELECTOR)
+            product_select.click()
+        except:
+            product_select = self.browser.find_element(*CdekLocators.PRODUCT_PAGE_SELECTOR)
+
+            self.browser.execute_script("arguments[0].scrollIntoView(true);", product_select)
+            sleep(1)
+            product_select.click()
 
     def get_size(self):
         assert self.is_element_present(*CdekLocators.PRODUCT_PAGE_SELECTOR_OPTION), "Размеры отсутствуют"
@@ -34,7 +39,11 @@ class CdekPage(BasePage):
 
     def backet_checkout(self):
         assert self.is_element_present(*CdekLocators.CHECKOUT), 'Кнопка оформить заказ отсутсвует'
-        button_checkout = self.browser.find_element(*CdekLocators.CHECKOUT)
-        self.browser.execute_script("arguments[0].scrollIntoView(true);", button_checkout)
-        sleep(1)
-        button_checkout.click()
+        try:
+            button_checkout = self.browser.find_element(*CdekLocators.CHECKOUT)
+            button_checkout.click()
+        except:
+            button_checkout = self.browser.find_element(*CdekLocators.CHECKOUT)
+            self.browser.execute_script("arguments[0].scrollIntoView(true);", button_checkout)
+            sleep(1)
+            button_checkout.click()

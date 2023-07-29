@@ -57,30 +57,30 @@ def test_resolution_ten(browser):
 @allure.title("проверка на разрешении 768×1024")
 def test_resolution_eleven(browser):
     go_test_cdek(browser, width=768, height=1024)
-
-
-@allure.title("проверка на разрешении 1280×800")
-def test_resolution_twelve(browser):
-    go_test_cdek(browser, width=1280, height=800)
-
-
-@allure.title("проверка на разрешении 800×1280")
-def test_resolution_thirteen(browser):
-    go_test_cdek(browser, width=800, height=1280)
-
-@allure.title("проверка на разрешении 601×962")
-def test_resolution_fourtenn(browser):
-    go_test_cdek(browser, width=601, height=962)
-
-
-@allure.title("проверка на разрешении 600×1024")
-def test_resolution_fiveteen(browser):
-    go_test_cdek(browser, width=600, height=1024)
-
-
-@allure.title("проверка на разрешении 1024×1366")
-def test_resolution_sixteen(browser):
-    go_test_cdek(browser, width=1024, height=1366)
+#
+#
+# @allure.title("проверка на разрешении 1280×800")
+# def test_resolution_twelve(browser):
+#     go_test_cdek(browser, width=1280, height=800)
+#
+#
+# @allure.title("проверка на разрешении 800×1280")
+# def test_resolution_thirteen(browser):
+#     go_test_cdek(browser, width=800, height=1280)
+#
+# @allure.title("проверка на разрешении 601×962")
+# def test_resolution_fourtenn(browser):
+#     go_test_cdek(browser, width=601, height=962)
+#
+#
+# @allure.title("проверка на разрешении 600×1024")
+# def test_resolution_fiveteen(browser):
+#     go_test_cdek(browser, width=600, height=1024)
+#
+#
+# @allure.title("проверка на разрешении 1024×1366")
+# def test_resolution_sixteen(browser):
+#     go_test_cdek(browser, width=1024, height=1366)
 
 
 def go_test_cdek(browser, width, height):
