@@ -1,7 +1,10 @@
+from selenium.webdriver import ActionChains
+
 from .base_page import BasePage
 from locators.cdek_locators import CdekLocators
 from time import sleep
 from random import random
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class CdekPage(BasePage):
@@ -9,13 +12,14 @@ class CdekPage(BasePage):
     def checking_product(self):
         assert self.is_element_present(*CdekLocators.PRODUCT_PAGE_SELECTOR), "Кнопка выбора размеров отсутствует"
         product_select = self.browser.find_element(*CdekLocators.PRODUCT_PAGE_SELECTOR)
-        product_scroll = self.browser.execute_script("arguments[0].scrollIntoView();", product_select)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", product_select)
+        sleep(1)
         product_select.click()
 
     def get_size(self):
         assert self.is_element_present(*CdekLocators.PRODUCT_PAGE_SELECTOR_OPTION), "Размеры отсутствуют"
-
         product_select_size = self.browser.find_elements(*CdekLocators.PRODUCT_PAGE_SELECTOR_OPTION)[0].click()
+        sleep(1)
 
     def check_add_cart(self):
         sleep(2)
@@ -31,5 +35,6 @@ class CdekPage(BasePage):
     def backet_checkout(self):
         assert self.is_element_present(*CdekLocators.CHECKOUT), 'Кнопка оформить заказ отсутсвует'
         button_checkout = self.browser.find_element(*CdekLocators.CHECKOUT)
-        checkout_scroll = self.browser.execute_script("arguments[0].scrollIntoView();", button_checkout)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", button_checkout)
+        sleep(1)
         button_checkout.click()
