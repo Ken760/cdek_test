@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture(scope="session")
 def browser():
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = browser.Chrome(service=Service(ChromeDriverManager().install()))
     yield driver
     driver.quit()
 
@@ -24,7 +24,11 @@ def browser(request):
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        options = Options()
+
+        options.add_argument('--user-agent=Chrome/116.0.0.0 Safari/537.36 CDEKMobileApp/iOS/')
+
+        browser = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         browser = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
