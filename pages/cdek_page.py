@@ -1,8 +1,8 @@
 from selenium.webdriver import ActionChains
-
 from .base_page import BasePage
-from locators.cdek_locators import CdekLocators, CartLocators
+from locators.cdek_locators import CdekLocators, CartLocators, autorization
 from time import sleep
+from selenium.webdriver.common.keys import Keys
 from random import random
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -55,13 +55,76 @@ class CdekPage(BasePage):
         assert self.is_element_present(*CdekLocators.SEARCH_FIELD), 'Поле поиска отутсвует'
         search = self.browser.find_element(*CdekLocators.SEARCH_FIELD)
         search.click()
-        sleep(1)
 
-    def input_search_field(self):
-        input_search = self.browser.find_element(*CdekLocators.INPUT_SEARCH_FIELD).click()
+    # def input_search_field(self):
+    #     input_search = self.browser.find_element(*CdekLocators.INPUT_SEARCH_FIELD).click()
+    #     sleep(5)
+    #     input_search.clear()
+    #     input_search.send_keys('aaa')
+    def home_button(self):
+        buttons = self.browser.find_element(*CdekLocators.AUTH_BUTTON)
+        buttons.click()
         sleep(5)
-        input_search.send_keys('word')
+
+    def auth(self):
+        auth_button = self.browser.find_elements(*autorization.AUTH)[1]
+        auth_button.click()
+        email_button = self.browser.find_element(*autorization.EMAIL)
+        email_button.click()
+        sleep(5)
+        email_input = self.browser.find_element(*autorization.EMAIL_INPUT)
+        email_input.click()
+        email_input.send_keys('aaaaa')
         sleep(5)
 
 
+
+        # email_input.send_keys('nehnaev@gmail.com')
+        #
+        # sleep(10)
+        # sleep(1000)
+    def slider(self):
+        assert self.is_element_present(*CdekLocators.SLIDER), 'Банер отсутсвует'
+        slider_click = self.browser.find_element(*CdekLocators.SLIDER)
+        slider_click.click()
+        sleep(500)
+
+    def catalog(self):
+        # assert self.is_element_present(*CdekLocators.CATALOG), 'Кнопка каталог отсутсвует или не работает'
+        catalog = self.browser.find_element(*CdekLocators.CATALOG)
+        sleep(10)
+        catalog.click()
+        sleep(10)
+        catalog_product = self.browser.find_element(*CdekLocators.CATALOG_PRODUCT)
+        sleep(5)
+        catalog_product.click()
+        sleep(20)
+
+    def item(self):
+        assert self.is_element_present(*CdekLocators.ITEM), 'Товар отсутсвует'
+        item_click = self.browser.find_element(*CdekLocators.ITEM)
+        item_click.click()
+        sleep(5)
+
+    def catalog_laptop(self):
+        laptop_button = self.browser.find_elements(*CdekLocators.BUTTON_CATALOG)[1]
+        laptop_button.click()
+        sleep(5)
+        product_catalog = self.browser.find_elements(*CdekLocators.PRODUCT_CATALOG)[0]
+        product_catalog.click()
+        sleep(5)
+
+    def catalog_filter(self):
+        laptop_button = self.browser.find_elements(*CdekLocators.BUTTON_CATALOG)[1]
+        laptop_button.click()
+        sleep(5)
+        filter_catalog = self.browser.find_element(*CdekLocators.PRODUCT_FILTER)
+        filter_catalog.click()
+        sleep(10)
+    def catalog_gaming(self):
+        laptop_button = self.browser.find_elements(*CdekLocators.BUTTON_CATALOG)[0]
+        laptop_button.click()
+        product_catalog = self.browser.find_elements(*CdekLocators.PRODUCT_CATALOG)[0]
+        product_catalog.click()
+        sleep(5)
 
